@@ -7,4 +7,32 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bizo';
+  list:any;
+
+  constructor(){
+    this.list = [
+      { 'name': 'Home' },
+      { 'name': 'About',
+      optionlist :[
+          { 'name': 'vision' },
+          { 'name': 'Mission' },
+          { 'name': 'Partner' },
+          { 'name': 'Leadership' }
+        ],
+        'option': true
+     },
+      { 'name': 'Portfolio',
+      optionlist :[
+          { 'name': 'Sevices' },
+          { 'name': 'Project' }
+        ],
+        'option': true },
+      { 'name': 'Contact' },
+      { 'name': 'Setting' },
+      { 'name': 'Sitmap'}
+    ]
+  }
+
+  ngOninit (){
+  }
 }

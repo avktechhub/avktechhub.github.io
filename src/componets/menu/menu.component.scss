@@ -1,0 +1,34 @@
+nav{
+    background:#21587e;
+}
+::ng-deep ul{
+    margin:0px;
+    li{
+      position: relative;
+      display: inline-block;
+      padding:5px;
+      a{
+        padding:5px;
+        text-decoration: none;
+        color:#fff;
+        font-size: 12px;
+        line-height:24px;
+      }
+        ul{
+            position: absolute;
+            display: none;
+            width: 250px;
+            padding: 0;
+            background:#21587e;
+        }
+        &:hover{
+            a{
+                background:#21587e;
+                color:#fff;
+            }
+            ul{
+                display: block;
+            }
+        }
+    }
+}

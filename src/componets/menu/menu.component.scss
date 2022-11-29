@@ -13,13 +13,21 @@ nav{
         color:#fff;
         font-size: 12px;
         line-height:24px;
+        cursor:pointer;
+        svg{
+            margin-top: 3px;
+            float: left;
+        }
       }
         ul{
             position: absolute;
             display: none;
-            width: 250px;
+            width: 200px;
             padding: 0;
             background:#21587e;
+            li{
+                display:block;
+            }
         }
         &:hover{
             a{

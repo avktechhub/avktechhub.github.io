@@ -4,3 +4,43 @@ header{
         background: #90ceff;
     }
 }
+
+::ng-deep   .right-pos-nav{
+    position:absolute;
+    right:15px;
+    top:0px;
+    .div-center{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 100%;
+        margin-top: 4px;
+     ul{
+        margin:0px;
+        padding:0px;
+         li{
+            padding:0px;
+            a{
+                padding:0px;
+                line-height: normal;
+                width:25px;
+                height:25px;
+                img{
+                    width:25px;
+                    height:25px;
+                    border-radius:50%;
+                    margin-right:15px;
+                }
+            }
+             ul{
+                 right:0px;
+                 left:auto;
+             }
+         }
+     }
+     }
+     span{
+         color:#fff;
+         font-size:12px;
+     }
+ }

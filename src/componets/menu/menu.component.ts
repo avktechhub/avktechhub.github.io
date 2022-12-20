@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild, Input } from '@angular/core';
+import { VirtualTimeScheduler } from 'rxjs';
+import{MenuBarService} from './menu.service'
 
 @Component({
   selector: 'app-menu',
@@ -9,12 +11,13 @@ export class MenuComponent implements OnInit {
 
   @ViewChild('navContainer', { static: false }) nav!: ElementRef;
 
-  @Input() navConfig: Array<any> = [];
+  @Input() navConfig:any;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private getCallback:MenuBarService) { }
 
 
   ngOnInit(): void {
+    this.navConfig['selectCallback'] = this.getCallback
   }
   ngAfterViewInit() {
     
@@ -23,14 +26,15 @@ export class MenuComponent implements OnInit {
     let Ul = document.createElement('ul');
     this.renderer.appendChild(navlist, Ul);
 
-    this.navConfig.filter((listname) => { return listname })
-      .map((ln) => {
+    this.navConfig.filter((listname:any) => { return listname })
+      .map((ln:any) => {
         let li = document.createElement('li');
         let a = document.createElement('a');
         this.renderer.appendChild(Ul, li);
         this.renderer.appendChild(li, a);
         let aText = a.innerText = ln.name;
         let disName = ln.name == undefined ? '' :  aText;
+       a.addEventListener('click', this.selectCallback.bind(this, aText))
 
          //Add icon here.
         let addIcon = () => {
@@ -66,8 +70,13 @@ export class MenuComponent implements OnInit {
               optUl.appendChild(optLi)
               optLi.appendChild(optA)
               optA.innerText = optMenulist.name;
+              optA.addEventListener('click', this.selectCallback.bind(optA.innerText))
             })
         }
       });
+  }
+  selectCallback(list:any){
+    console.log("get", list);
+      this.getCallback.sendMessage(list);
   }
 }

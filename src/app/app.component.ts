@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MenuBarService } from 'src/componets/menu/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,12 @@ export class AppComponent {
   title = 'bizo';
   list:any;
   profileNav:any;
+  subscription:any = Subscription
+  
 
   constructor(){
     this.list = [
-      { 'name': 'Home'
+      { 'name': 'Home',
        },
       { 'name': 'About',
       optionlist :[
@@ -49,5 +53,18 @@ export class AppComponent {
   }
 
   ngOninit (){
+  }
+
+  ngAfterViewInit(){
+    this.subscription = this.list['selectCallback'].getMessage().subscribe((data:any) =>{
+
+      alert("your callback fire for  = " + data)
+
+    })
+    this.subscription = this.list['selectCallback'].getMessage().subscribe((data:any) =>{
+
+      alert("your callback fire for  = " + data)
+
+    })
   }
 }

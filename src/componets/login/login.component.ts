@@ -8,7 +8,7 @@ type NewType = OnInit;
     styleUrls:['./login.component.scss']
 })
 
-export class LoginForm implements OnInit {
+export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         

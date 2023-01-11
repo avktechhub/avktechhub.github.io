@@ -63,10 +63,5 @@ export class AppComponent {
       alert("your callback fire for  = " + data)
 
     })
-    this.subscription = this.list.optionlist['selectCallback'].getMessage().subscribe((data:any) =>{
-
-      alert("your callback fire for  = " + data)
-
-    })
   }
 }

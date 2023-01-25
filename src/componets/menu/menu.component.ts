@@ -34,25 +34,14 @@ export class MenuComponent implements OnInit {
         this.renderer.appendChild(li, a);
         let aText = a.innerText = ln.name;
         let disName = ln.name == undefined ? '' :  aText;
-       a.addEventListener('click', this.selectCallback.bind(this, aText))
-
-         //Add icon here.
+        //Add icon here.
         let addIcon = () => {
           if(ln.image){
             a.innerHTML = `<img src="${ln.imgURL}" alt="">`
           }
           else{
-            a.innerHTML = 
-            `<svg class="bi bi-x-circle" fill="#ec5e45" height="16"
-                viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path
-                     d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-            </svg> <span>${disName}</span>
-            `
+            a.innerHTML = `<i></i>${disName}</span>`
           }
-         
         };
 
         //Condition for add icon or text.
@@ -70,9 +59,14 @@ export class MenuComponent implements OnInit {
               optUl.appendChild(optLi)
               optLi.appendChild(optA)
               optA.innerText = optMenulist.name;
+              optMenulist['selectCallback'] = this.getCallback
               optA.addEventListener('click', this.selectCallback.bind(optA.innerText))
             })
+            
+            
         }
+        ln.option ? '': a.addEventListener('click', this.selectCallback.bind(this, aText));
+        
       });
   }
   selectCallback(list:any){

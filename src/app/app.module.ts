@@ -2,25 +2,29 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from 'src/componets/footer/footer.component';
 import { LoginComponent } from 'src/componets/login/login.component';
-import { MenuComponent } from 'src/componets/menu/menu.component';
-import { MenuBarService } from 'src/componets/menu/menu.service';
 import { authInterceptorProviders } from 'src/_helper/auth.interceptor';
 
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
+import { SvgIconComponent } from './svg.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import { MenuModule } from 'src/componets/menu/menu.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    SvgIconComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    MenuModule
   ],
-  providers: [MenuBarService, authInterceptorProviders],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

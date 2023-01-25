@@ -65,8 +65,11 @@ header{
         background:transparent !important;
         ul{
             padding:0px;
+            position:relative;
+            width:100%;
+            transition: 2s;
             li{
-                display:flex;
+                display:block;
                 padding:5px 0px;
                 svg{
                     margin-right:5px;

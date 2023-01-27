@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Users } from 'src/componets/login/login.model'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,8 @@ export class AppComponent {
   list:any;
   profileNav:any;
   subscription:any = Subscription
-  subscription2:any = Subscription
   
-
-  constructor(){
+  constructor(public router:Router){
     this.list = [
       {
         'name': 'Attendance',
@@ -33,7 +32,7 @@ export class AppComponent {
         'option': true
       },
       {
-        'name': 'Book Store',
+        'name': 'Store',
         'icon': true,
       },
       { 
@@ -66,10 +65,7 @@ export class AppComponent {
 
   ngAfterViewInit(){
     this.subscription = this.list['selectCallback'].getMessage().subscribe((data:any) =>{
-        alert("your callback fire for  = " + data)
+        this.router.navigate([data]);
     });
-    this.subscription2 = this.list[1]['selectCallback'].getMessage().subscribe((data:any) =>{
-      alert("your callback fire for  = " + data)
-  })
   }
 }

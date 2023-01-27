@@ -59,8 +59,7 @@ export class MenuComponent implements OnInit {
               optUl.appendChild(optLi)
               optLi.appendChild(optA)
               optA.innerText = optMenulist.name;
-              optMenulist['selectCallback'] = this.getCallback
-              optA.addEventListener('click', this.selectCallback.bind(optA.innerText))
+              optA.addEventListener('click', this.selectCallback.bind(this, optA.innerText))
             })
             
             
